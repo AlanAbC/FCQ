@@ -154,3 +154,9 @@ svg:not(:root){
 .toolbar__title{
 	color: #E63F30 !important;
 }
+.tabbar--material{
+	background-color: #E63F30 !important;
+}
+span{
+	font-size: 8pt !important;
+}

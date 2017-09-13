@@ -31,6 +31,20 @@
     <body>
         <div class="app">
             <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+            <ons-tabbar>
+          <ons-tab page="page1.html" active="true">
+            <ons-icon icon="fa-newspaper-o"></ons-icon>
+            <span style="font-size: 14px">Noticias</span>
+          </ons-tab>
+          <ons-tab page="page1.html" active="true">
+            <ons-icon icon="fa-file-text-o"></ons-icon>
+            <span style="font-size: 14px">Convocatorias</span>
+          </ons-tab>
+          <ons-tab page="page1.html" active="true">
+            <ons-icon icon="fa-calendar-o"></ons-icon>
+            <span style="font-size: 14px">Eventos</span>
+          </ons-tab>
+        </ons-tabbar>
             <template id="page1.html">
               <ons-page id="page1">
                 <ons-toolbar>
@@ -43,8 +57,8 @@
             </template>
             <div class="posts">
             </div>
-            
         </div>
+
         
         <!-- SCRIPT ZONE -->
             <script type="text/javascript" src="cordova.js"></script>
