@@ -1,9 +1,16 @@
 $(document).ready(function(){
 	$('html').niceScroll();
 	$(document).foundation();
-  addcard();
-  addposts();
+	cargarInicio();
 });
+//Funcion para llamar las funciones que cargan la informacion de la pantalla y muestra el loader
+function cargarInicio() {
+    $('.loader').show();
+    addcard();
+    addposts();
+    $('.loader').hide();
+}
+
 //Funcion para la navegacion entre ventanas
 function pushpage(idevento){
     document.querySelector('#myNavigator').pushPage(idevento+'.html', {data: {title: 'Post'}});
