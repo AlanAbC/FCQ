@@ -31,20 +31,6 @@
     <body>
         <div class="app">
             <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
-            <ons-tabbar>
-          <ons-tab page="page1.html" active="true">
-            <ons-icon icon="fa-newspaper-o"></ons-icon>
-            <span style="font-size: 14px">Noticias</span>
-          </ons-tab>
-          <ons-tab page="page1.html" active="true">
-            <ons-icon icon="fa-file-text-o"></ons-icon>
-            <span style="font-size: 14px">Convocatorias</span>
-          </ons-tab>
-          <ons-tab page="page1.html" active="true">
-            <ons-icon icon="fa-calendar-o"></ons-icon>
-            <span style="font-size: 14px">Eventos</span>
-          </ons-tab>
-        </ons-tabbar>
             <template id="page1.html">
               <ons-page id="page1">
                 <ons-toolbar>
@@ -58,7 +44,24 @@
             <div class="posts">
             </div>
         </div>
-
+        <div class="tapbar">
+                <div class="filtro incio">
+                    <i class="fa fa-home imgfiltro"></i>
+                    <div class="txtfiltro">INICIO</div>
+                </div>
+                <div class="filtro noticias">
+                    <i class="fa fa-newspaper-o imgfiltro"></i>
+                    <div class="txtfiltro">NOTICIAS</div>
+                </div>
+                <div class="filtro convocatorias">
+                    <i class="fa fa-file-text-o imgfiltro"></i>
+                    <div class="txtfiltro">CONVOCATORIAS</div>
+                </div>
+                <div class="filtro eventos">
+                    <i class="fa fa-calendar-o imgfiltro"></i>
+                    <div class="txtfiltro">EVENTOS</div>
+                </div>
+        </div>
         <div class="loader" hidden>
             <img src="img/gif.gif" alt="Cargando...">
             <p>Cargando...</p>

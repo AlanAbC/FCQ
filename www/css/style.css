@@ -30,6 +30,9 @@ section,.section-div{margin: 0;padding: 0;width: 100%;display: block;background-
 	width: 100%;
 	height: 60px;
 }
+.page[status-bar-fill] > .toolbar + .page__background, .page[status-bar-fill] > .toolbar + .page__background + .page__content{
+	height: calc(100% - 113px);
+}
 .card_home{
 	position: relative;
 	float: left;
@@ -158,7 +161,7 @@ svg:not(:root){
 	background-color: #E63F30 !important;
 }
 span{
-	font-size: 8pt !important;
+	font-size: 10pt !important;
 }
 
 .loader{
@@ -183,4 +186,37 @@ span{
 	margin-top: 80%;
 	left: 50%;
 	margin-left: -12.5%;
+}
+.tapbar{
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	background: #E63F30;
+	bottom: 0;
+	z-index: 100;
+}
+.filtro{
+	position: relative;
+	float: left;
+	width: 25%;
+	height: 100%;
+}
+.imgfiltro{
+	position: relative !important;
+	float: left !important;
+	color: white;
+	width: 20px;
+	margin-left: 50%;
+	left: -10px;
+	margin-top: 10px;
+
+}
+.txtfiltro{
+	position: relative;
+	float: left;
+	width: 100%;
+	font-size: 7pt;
+	text-align: center;
+	color: white;
+	margin-top: 5px;
 }
