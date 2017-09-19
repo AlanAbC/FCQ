@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "173365143059",
+    "firebase_url": "https://fcquimica-92b38.firebaseio.com",
+    "project_id": "fcquimica-92b38",
+    "storage_bucket": "fcquimica-92b38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173365143059:android:d708c7ed4b922dfc",
+        "android_client_info": {
+          "package_name": "com.fcq.claresti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173365143059-8pvopo5u7r83l6q8rmm4es2sm5q3qnr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fcq.claresti",
+            "certificate_hash": "791e8f1ebdc26073bc71b1c3b3c3fcf381f64499"
+          }
+        },
+        {
+          "client_id": "173365143059-pcvepa3rhdnn1i255f8uqv6hgqdmepbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC07ZyC_m1vf1JEQ2C4WmnPNZYQ99Jyflk"
+        },
+        {
+          "current_key": "AIzaSyDxdwuDqVE40_yds7LpI9B0eup7SGmxZuw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173365143059-pcvepa3rhdnn1i255f8uqv6hgqdmepbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
