@@ -33,23 +33,23 @@
     <body>
     <div class="ui left demo vertical inverted sidebar labeled icon menu">
       <a class="item">
-        <i class="home icon"></i>
+        <i class="ion-home icon"></i>
         Home
       </a>
       <a class="item">
-        <i class="block layout icon"></i>
+        <i class="ion-earth icon"></i>
         Noticias
       </a>
       <a class="item">
-        <i class="ion-paperclip icon"></i>
+        <i class="ion-document-text icon"></i>
         Convocatorias
       </a>
       <a class="item">
-        <i class="calendar outline icon"></i>
+        <i class="ion-calendar icon"></i>
         Eventos
       </a>
     </div>
-      <div class="pusher">
+      <div class="dimmed pusher">
         <div class="app">
             <ons-navigator swipeable id="myNavigator" page="page1.html">
             </ons-navigator>
@@ -57,7 +57,7 @@
               <ons-page id="page1">
                 <ons-toolbar>
                   <div class="left">
-                    <ons-toolbar-button class="menuButton">
+                    <ons-toolbar-button onclick="pushmenu()">
                       <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
                     </ons-toolbar-button>
                   </div>

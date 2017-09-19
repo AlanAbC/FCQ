@@ -2,18 +2,8 @@ $(document).ready(function(){
 	$('html').niceScroll();
 	$(document).foundation();
 	cargarInicio();
-  
 });
-$(".menuButton").click(function(event) {
-  $('.ui.labeled.icon.sidebar').sidebar('toggle');
-});
-
-// Add to index.js or the first page that loads with your app.
-// For Intel XDK and please add this to your app.js.
-
 document.addEventListener('deviceready', function () {
-  // Enable to debug issues.
-  // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
   
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -23,10 +13,6 @@ document.addEventListener('deviceready', function () {
     .startInit("ee3ed7e5-a647-44f4-9e8e-e756e7147518")
     .handleNotificationOpened(notificationOpenedCallback)
     .endInit();
-  
-  // Call syncHashedEmail anywhere in your app if you have the user's email.
-  // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
-  // window.plugins.OneSignal.syncHashedEmail(userEmail);
 }, false);
 //Funcion para llamar las funciones que cargan la informacion de la pantalla y muestra el loader
 function cargarInicio() {
@@ -35,7 +21,10 @@ function cargarInicio() {
     addposts();
     $('.loader').hide();
 }
-
+//Funcion para desplegar el menu
+function pushmenu(){
+  $('.ui.labeled.icon.sidebar').sidebar('toggle');
+}
 //Funcion para la navegacion entre ventanas
 function pushpage(idevento){
     document.querySelector('#myNavigator').pushPage(idevento+'.html', {data: {title: 'Post'}});
