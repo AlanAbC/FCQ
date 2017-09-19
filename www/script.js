@@ -2,7 +2,12 @@ $(document).ready(function(){
 	$('html').niceScroll();
 	$(document).foundation();
 	cargarInicio();
+  
 });
+$(".menuButton").click(function(event) {
+  $('.ui.labeled.icon.sidebar').sidebar('toggle');
+});
+
 // Add to index.js or the first page that loads with your app.
 // For Intel XDK and please add this to your app.js.
 

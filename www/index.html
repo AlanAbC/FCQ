@@ -25,15 +25,42 @@
         <link rel="stylesheet" href="css/hover.css">
         <link rel="stylesheet" href="css/swal.css">
         <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">   
+        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">   
+        <link rel="stylesheet" href="ionicons-2.0.1/css/ionicons.min.css">
         <title>FCQ</title>
     </head>
     <body>
+    <div class="ui left demo vertical inverted sidebar labeled icon menu">
+      <a class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a class="item">
+        <i class="block layout icon"></i>
+        Noticias
+      </a>
+      <a class="item">
+        <i class="ion-paperclip icon"></i>
+        Convocatorias
+      </a>
+      <a class="item">
+        <i class="calendar outline icon"></i>
+        Eventos
+      </a>
+    </div>
+      <div class="pusher">
         <div class="app">
-            <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+            <ons-navigator swipeable id="myNavigator" page="page1.html">
+            </ons-navigator>
             <template id="page1.html">
               <ons-page id="page1">
                 <ons-toolbar>
+                  <div class="left">
+                    <ons-toolbar-button class="menuButton">
+                      <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
+                    </ons-toolbar-button>
+                  </div>
                   <div class="center">Inicio</div>
                 </ons-toolbar>
                 <div class="cards">
@@ -44,7 +71,9 @@
             <div class="posts">
             </div>
         </div>
-        <div class="tapbar">
+      </div>
+        
+        <!--<div class="tapbar">
                 <div class="filtro incio">
                     <i class="fa fa-home imgfiltro"></i>
                     <div class="txtfiltro">INICIO</div>
@@ -61,7 +90,7 @@
                     <i class="fa fa-calendar-o imgfiltro"></i>
                     <div class="txtfiltro">EVENTOS</div>
                 </div>
-        </div>
+        </div>-->
         <div class="loader" hidden>
             <img src="img/gif.gif" alt="Cargando...">
             <p>Cargando...</p>
@@ -79,6 +108,7 @@
             <script src="js/nicescroll.js"></script>
             <script src="script.js"></script>
             <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+            <script src="semantic/dist/semantic.min.js"></script>
         <!-- SCRIPT ZONE -->
     </body>
 </html>

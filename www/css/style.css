@@ -30,8 +30,8 @@ section,.section-div{margin: 0;padding: 0;width: 100%;display: block;background-
 	width: 100%;
 	height: 60px;
 }
-.page[status-bar-fill] > .toolbar + .page__background, .page[status-bar-fill] > .toolbar + .page__background + .page__content{
-	height: calc(100% - 113px);
+.ui.visible.uncover.sidebar{
+	background-color: #E63F30 !important;
 }
 .card_home{
 	position: relative;
@@ -219,4 +219,10 @@ span{
 	text-align: center;
 	color: white;
 	margin-top: 5px;
+}
+.menuicon{
+	position: relative;
+	float: left;
+	width: 30px; background-color: red;
+	height: 40px;
 }
