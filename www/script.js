@@ -57,7 +57,17 @@ function addposts(url){
 
   });
 }
+function filterposts(cat){
+    url = "http://fcq.claresti.com/api/?o=posts_cat&cat="+cat;
+    addcard(url);
+    addposts(url);
 
+}
+function homeposts(){
+  url = "http://fcq.claresti.com/api/?o=posts"
+  addcard(url);
+  addposts(url);
+}
 function searchposts(){
   value = $(".srchinput").val()
   $(".srchcards").html("");

@@ -33,7 +33,7 @@
     <body>
     <div class="ui left demo vertical inverted sidebar labeled icon menu">
       <a class="item">
-        <i class="ion-home icon"></i>
+        <i class="ion-home icon" onclick="pushmenu();homeposts();"></i>
         Home
       </a>
        <a class="item" onclick="pushmenu();pushpage('pagebus');">
@@ -44,11 +44,11 @@
         <i class="ion-earth icon"></i>
         Noticias
       </a>
-      <a class="item">
+      <a class="item" onclick="pushmenu();filterposts('Convocatorias');">
         <i class="ion-document-text icon"></i>
         Convocatorias
       </a>
-      <a class="item">
+      <a class="item" onclick="pushmenu();filterposts('Eventos');">
         <i class="ion-calendar icon"></i>
         Eventos
       </a>
