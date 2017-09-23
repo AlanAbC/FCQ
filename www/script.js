@@ -6,7 +6,7 @@ $(document).ready(function(){
 	cargarInicio();
 });
 document.addEventListener('deviceready', function () {
-  
+
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
@@ -21,6 +21,7 @@ function cargarInicio() {
     $('.loader').show();
     addcard('http://fcq.claresti.com/api/?o=posts');
     addposts('http://fcq.claresti.com/api/?o=posts');
+	  loadMenu();
     $('.loader').hide();
 }
 //Funcion para desplegar el menu
@@ -83,7 +84,31 @@ function searchposts(){
         });
       }else{
         $(".srchcards").append('<div class="oops"><img src="img/empty.png" class="emptysrch" alt=""><p class="emptytxt">No hay elementos</p></div>');
-      }   
+      }
 
   });
+}
+
+// Funcion para cargar los elementos del menú
+function loadMenu(){
+    var menu = $("#menu");
+    menu.html("");
+    menu.append('<a class="item"><i class="ion-home icon" onclick="pushmenu();homeposts();"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a>');
+    var url = "http://fcq.claresti.com/api/?o=categories"
+    $.getJSON(url, function(json, textStatus){
+  		$.each(json, function(index, item) {
+  			menu.append('<a class="item"><i class="ion-earth icon" onclick="filtroCat(event)" id="' + item['slug'] + '"></i>' + item['name'] + '</a>');
+  		});
+    });
+}
+
+// Funcion para cargar los post de la categoria seleccionada en el menú
+function filtroCat(event){
+  var cat = event.path[0].id;
+  var url = 'http://fcq.claresti.com/api/?o=posts_cat&cat=' + cat;
+  $('.loader').show();
+  addcard(url);
+  addposts(url);
+
+  $('.loader').hide();
 }
