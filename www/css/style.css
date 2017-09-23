@@ -229,3 +229,45 @@ span{
 .ons-icon{
 	color: #E63F30 !important;
 }
+.searchinput{
+	position: relative;
+	float: left;
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 10px;
+}
+.srchicon{
+	color: #E63F30;
+}
+.srchinput[placeholder]{
+	color: #E63F30;	
+}
+.srchcards{
+	position: relative;
+	float: left;
+	width: 100%;
+
+}
+.oops{
+	position: relative;
+	float: left;
+	width: 100%;
+
+}
+.emptysrch{
+	position: relative;
+	float: left;
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 10vh;
+}
+.emptytxt{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-top: 15px;
+	font-size: 23pt;
+	color: #E63F30;
+	text-align: center;
+	
+}

@@ -36,6 +36,10 @@
         <i class="ion-home icon"></i>
         Home
       </a>
+       <a class="item" onclick="pushmenu();pushpage('pagebus');">
+        <i class="ion-search icon"></i>
+        Busqueda
+      </a>
       <a class="item">
         <i class="ion-earth icon"></i>
         Noticias
@@ -64,11 +68,29 @@
                   <div class="center">Inicio</div>
                 </ons-toolbar>
                 <div class="cards">
-                </div>
-                
+                </div>  
               </ons-page>
             </template>
             <div class="posts">
+            </div>
+            <template id="pagebus.html">
+              <ons-page id="bus">
+                <ons-toolbar>
+                  <div class="left"><ons-back-button>Inicio</ons-back-button></div>
+                  <div class="center">Busqueda</div>
+                </ons-toolbar>
+                <div class="contsearch">
+                	<div class="ui icon input searchinput">
+					  <input type="text" placeholder="Search..." class="srchinput">
+					  <i class="circular search link icon srchicon" onclick="searchposts()"></i>
+					</div>
+					<div class="srchcards">
+					</div>
+                </div>  
+              </ons-page>
+            </template>
+            <div class="searchedposts">
+
             </div>
         </div>
       </div>

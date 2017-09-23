@@ -57,3 +57,23 @@ function addposts(url){
 
   });
 }
+
+function searchposts(){
+  value = $(".srchinput").val()
+  $(".srchcards").html("");
+  $(".searchedposts").html("");
+  url = "http://fcq.claresti.com/api/?o=search&sq="+value;
+  $.getJSON(url, function(json, textStatus) {
+      if(json.length != 0){
+        $(".oops").css('display', 'none');
+         $.each(json,function(le, item) {
+          $(".srchcards").append('<div class="card_home"><div class="card_img"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button" onclick="pushpage('+item["id"]+')"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>');
+          $(".card_img").css('background-image', 'url("'+item["image"]+'")');
+          $(".searchedposts").append('<template id="'+item["id"]+'.html"><ons-page id="page2"><ons-toolbar><div class="left"><ons-back-button>Busqueda</ons-back-button></div><div class="center">Post</div></ons-toolbar><div class="img_single" style="background-image: url(' + "'" + item['image'] + "'" + ')"><div class="title_single"><strong>'+item["title"]+'</strong></div><p class="fecha_single">'+item["date"]+'</p><div class="contenido_single">'+item["content"]+'</div></div></ons-page></template>');
+        });
+      }else{
+        $(".srchcards").append('<div class="oops"><img src="img/empty.png" class="emptysrch" alt=""><p class="emptytxt">No hay elementos</p></div>');
+      }   
+
+  });
+}
