@@ -97,7 +97,7 @@ function loadMenu(){
     var url = "http://fcq.claresti.com/api/?o=categories"
     $.getJSON(url, function(json, textStatus){
   		$.each(json, function(index, item) {
-  			menu.append('<a class="item"><i class="ion-earth icon" onclick="filtroCat(event)" id="' + item['slug'] + '"></i>' + item['name'] + '</a>');
+  			menu.append('<a class="item"><i class="ion-earth icon" onclick="pushmenu();filtroCat(event);" id="' + item['slug'] + '"></i>' + item['name'] + '</a>');
   		});
     });
 }
