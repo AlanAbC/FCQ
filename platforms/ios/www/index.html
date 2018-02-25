@@ -17,45 +17,25 @@
         
 
         <!--STYLE-->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/swiper.min.css">  
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/foundation.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/hover.css">
-        <link rel="stylesheet" href="css/swal.css">
-        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">   
-        <link rel="stylesheet" href="ionicons-2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css"  href="css/style.css">
+        <link rel="stylesheet" type="text/css"  href="css/swiper.min.css">  
+        <link rel="stylesheet" type="text/css"  href="css/normalize.css">
+        <link rel="stylesheet" type="text/css"  href="css/foundation.min.css">
+        <link rel="stylesheet" type="text/css"  href="css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css"  href="css/hover.css">
+        <link rel="stylesheet" type="text/css"  href="css/swal.css">
+        <link rel="stylesheet" type="text/css"  href="https://unpkg.com/onsenui/css/onsenui.css">
+        <link rel="stylesheet" type="text/css"  href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+        <link rel="stylesheet" type="text/css"  href="semantic/dist/semantic.min.css">   
         <title>FCQ</title>
     </head>
     <body>
-    <div class="ui left demo vertical inverted sidebar labeled icon menu" id="menu">
-      <!-- <a class="item">
-        <i class="ion-home icon" onclick="pushmenu();homeposts();"></i>
-        Home
-      </a>
-       <a class="item" onclick="pushmenu();pushpage('pagebus');">
-        <i class="ion-search icon"></i>
-        Busqueda
-      </a>
-      <a class="item">
-        <i class="ion-earth icon"></i>
-        Noticias
-      </a>
-      <a class="item" onclick="pushmenu();filterposts('Convocatorias');">
-        <i class="ion-document-text icon"></i>
-        Convocatorias
-      </a>
-      <a class="item" onclick="pushmenu();filterposts('Eventos');">
-        <i class="ion-calendar icon"></i>
-        Eventos
-      </a> -->
+    <div class="ui left demo vertical inverted sidebar labeled icon menu" type="reveal" id="menu">
     </div>
       <div class="dimmed pusher">
         <div class="app">
-            <ons-navigator swipeable id="myNavigator" page="page1.html">
+            <div class="loader" hidden></div>
+            <ons-navigator swipeable id="myNavigator" setSwipeable(true) page="pageFacult.html">
             </ons-navigator>
             <template id="page1.html">
               <ons-page id="page1">
@@ -89,34 +69,23 @@
                 </div>  
               </ons-page>
             </template>
+            <template id="pageFacult.html">
+              <ons-page id="page1Facult">
+                <ons-toolbar>
+                  <div class="center">¿Cual es tu Facultad?</div>
+                </ons-toolbar>
+                <div class="categorias">
+                    <div class="catcontainer" id="catcontainer">
+                    </div>
+                    
+                </div>  
+              </ons-page>
+            </template>
             <div class="searchedposts">
 
             </div>
         </div>
       </div>
-        
-        <!--<div class="tapbar">
-                <div class="filtro incio">
-                    <i class="fa fa-home imgfiltro"></i>
-                    <div class="txtfiltro">INICIO</div>
-                </div>
-                <div class="filtro noticias">
-                    <i class="fa fa-newspaper-o imgfiltro"></i>
-                    <div class="txtfiltro">NOTICIAS</div>
-                </div>
-                <div class="filtro convocatorias">
-                    <i class="fa fa-file-text-o imgfiltro"></i>
-                    <div class="txtfiltro">CONVOCATORIAS</div>
-                </div>
-                <div class="filtro eventos">
-                    <i class="fa fa-calendar-o imgfiltro"></i>
-                    <div class="txtfiltro">EVENTOS</div>
-                </div>
-        </div>-->
-        <div class="loader" hidden>
-            <img src="img/gif.gif" alt="Cargando...">
-            <p>Cargando...</p>
-        </div>
 
         <!-- SCRIPT ZONE -->
             <script type="text/javascript" src="cordova.js"></script>
