@@ -413,5 +413,14 @@ i.circular.search.link.icon.srchicon {
 	margin-top: 3%;
 	height: auto;
 }
-
+.checkedFacult{
+	position: relative;
+	float: right;
+	width: 17px;
+	height: 17px;
+	border-radius: 100%;
+	border: 2px solid white;
+	margin-top: 47%;
+	margin-right: 10px;
+}
 /*# sourceMappingURL=style.css.map */

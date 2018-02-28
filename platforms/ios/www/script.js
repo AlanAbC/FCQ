@@ -1,8 +1,11 @@
-var baseUrl = 'http://fcq.claresti.com/api/?o='
+var baseUrl = 'http://feuq.com.mx/api/?o='
 
 var urlCat = baseUrl + 'posts_cat&cat='
 
 var loader = $('.loader');
+
+var faculties = [];
+var facultiesFlags = [];
 document.addEventListener('deviceready', function () {
   if(localStorage.getItem('faculti')){
     document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
@@ -19,13 +22,11 @@ document.addEventListener('deviceready', function () {
   window.plugins.OneSignal
   .startInit("ee3ed7e5-a647-44f4-9e8e-e756e7147518")
   .handleNotificationOpened(notificationOpenedCallback)
-  .endInit()
-  .sendTag("Facultad", "informatica");
+  .endInit();
 }, false);
 //Funcion para llamar las funciones que cargan la informacion de la pantalla y muestra el loader
 function cargarInicio() {
-  addcard(baseUrl + 'posts');
-  addposts(baseUrl + 'posts');
+  addcard(baseUrl + 'posts_fac&fac=' + localStorage.getItem('faculti'));
   loadMenu();
 }
 function cargarFacultades(){
@@ -33,13 +34,14 @@ function cargarFacultades(){
   var url = baseUrl + "faculties"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
-      var icon = item['image'] || 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/No_icon_red.svg/1000px-No_icon_red.svg.png';
+      var icon = item['image'] || 'img/college-graduation.png';
+      faculties.push(item["slug"]);
+      facultiesFlags.push(false);
       var item_category = 
       $('<div>')
       .addClass('catElement')
       .attr('style', 'background: ' + item['color'] + '!important')
-      .attr('onclick', 'beginPosts('+item["term_id"]+')')
-      .attr('id', item['term_id'])
+      .attr('onclick', 'beginPosts("'+item["slug"]+'")')
       .append(
         $('<p>')
         .addClass('catElementText')
@@ -49,6 +51,11 @@ function cargarFacultades(){
         $('<img>')
         .addClass('imgCatElement')
         .attr('src', icon)
+        )
+      .append(
+        $('<div>')
+        .addClass('checkedFacult')
+        .attr('id', item['slug'])
         )
       container.append(item_category);
     });
@@ -61,13 +68,31 @@ function pushmenu(){
 }
 //Funcion para la navegacion entre ventanas
 function pushpage(idevento){
-  document.querySelector('#myNavigator').pushPage(idevento+'.html', {data: {title: 'Post'}});
+  loader.attr('style', 'display: block !important');
+  document.querySelector('#myNavigator').pushPage('single.html', {data: {title: 'Post'}});
+  url = baseUrl + 'post&id=' + idevento;
+  $.getJSON(url, function(json, textStatus) {
+    $('.img_single').attr('style', 'background-image: url(' + json[0].image + ')');
+    $('.title_single').html(json[0].title);
+    $('.fecha_single').html(json[0].date);
+    $('.contenido_single').html(json[0].content);
+  });
+  loader.attr('style', 'display: none !important');
     //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
 function beginPosts(idFacultad){
-  localStorage.setItem('faculti' ,idFacultad);
+  index = faculties.indexOf(idFacultad)
+  if(facultiesFlags[index]){
+      $("#" + idFacultad). css('background-color', 'transparent');
+      facultiesFlags[index] = false;
+  }else{
+      $("#" + idFacultad). css('background-color', 'white');
+      facultiesFlags[index] = true;
+  }
+  
+  /*localStorage.setItem('faculti' ,idFacultad);
   document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
-  cargarInicio();
+  cargarInicio();*/
 }
   function home_card_template(le, item) {
     return '<div class="card_home"><div class="card_img" id="item-' + le + '"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button" onclick="pushpage('+item["id"]+')"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>';
@@ -88,7 +113,7 @@ function addcard(url){
   });
   loader.attr('style', 'display: none !important');
 }
-function addposts(url){
+/*function addposts(url){
 
   $(".posts").html("");
 
@@ -98,7 +123,7 @@ function addposts(url){
     });
 
   });
-}
+}*/
 function filterposts(cat){
   url = baseUrl + "posts_cat&cat="+cat;
   addcard(url);
@@ -142,7 +167,7 @@ function loadMenu(){
   var url = baseUrl + "categories"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
-      var icon = item['icon'] || 'ion-alert-circled';
+      var icon = item['icon'] || 'ion-android-happy';
       var item_menu = 
       $('<a>')
       .attr('id', item['slug'])

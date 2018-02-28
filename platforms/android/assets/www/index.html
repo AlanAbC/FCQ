@@ -52,6 +52,20 @@
               </ons-page>
             </template>
             <div class="posts">
+                <template id="single.html">
+                    <ons-page id="page2">
+                        <ons-toolbar>
+                            <div class="left">
+                                <ons-back-button>Inicio</ons-back-button>
+                            </div>
+                            <div class="center">Post</div>
+                        </ons-toolbar>
+                        <div class="img_single">
+                            <div class="title_single"></div><p class="fecha_single"></p>
+                            <div class="contenido_single"></div>
+                        </div>
+                    </ons-page>
+                </template>
             </div>
             <template id="pagebus.html">
               <ons-page id="bus">
@@ -77,8 +91,10 @@
                 <div class="categorias">
                     <div class="catcontainer" id="catcontainer">
                     </div>
-                    
                 </div>  
+                <ons-fab position="bottom right">
+                    <ons-icon icon="ion-checkmark-round" style= "width: 30px"></ons-icon>
+                  </ons-fab> 
               </ons-page>
             </template>
             <div class="searchedposts">
