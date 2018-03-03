@@ -66,20 +66,25 @@ function cargarFacultades(){
 //Funcion para desplegar el menu
 function pushmenu(){
   $('.ui.labeled.icon.sidebar').sidebar('toggle');
-
+}
+//Funcion que despliega la pagina de busueda
+function pushSearch(){
+  document.querySelector('#myNavigator').pushPage('pagebus.html', {data: {title: 'Busqueda'}});
 }
 //Funcion para la navegacion entre ventanas
 function pushpage(idevento){
-  loader.attr('style', 'display: block !important');
+  $(".img_single").attr('style', 'display: none !important');
   document.querySelector('#myNavigator').pushPage('single.html', {data: {title: 'Post'}});
   url = baseUrl + 'post&id=' + idevento;
   $.getJSON(url, function(json, textStatus) {
-    $('.img_single').attr('style', 'background-image: url(' + json[0].image + ')');
     $('.title_single').html(json[0].title);
     $('.fecha_single').html(json[0].date);
     $('.contenido_single').html(json[0].content);
+    $(".loaderSingle").attr('style', 'display: none !important');
+    $(".img_single").attr('style', 'display: block !important');
+    $('.img_single').css('background-image', 'url(' + json[0].image  + ')');
   });
-  loader.attr('style', 'display: none !important');
+  
     //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
   function pushFaculties() {
@@ -109,14 +114,13 @@ function beginPosts(idFacultad){
 
 //Funcion para agregar cartas
 function addcard(url){
-  loader.attr('style', 'display: block !important');
   $(".cards").html("");
-
+  $(".loaderCards").attr('style', 'display: block !important');
   $.getJSON(url, function(json, textStatus) {
     $.each(json,function(le, item) {
       $(".cards").append(home_card_template(le, item));
       $(".card_img#item-" + le).css('background-image', 'url("'+item["image"]+'")');
-
+      $(".loaderCards").attr('style', 'display: none !important');
     });
 
   });
@@ -128,9 +132,13 @@ function savefaculties(){
             sendFaculties.push(faculties[i])
         }
     }
-    localStorage.setItem('faculti' ,sendFaculties);
-    document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
-    cargarInicio();
+    if (sendFaculties.length === 0) {
+        ons.notification.alert('Selecciona una facultad');
+    }else{
+        localStorage.setItem('faculti' ,sendFaculties);
+        document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+        cargarInicio();
+    }
 }
 /*function addposts(url){
 
@@ -180,7 +188,7 @@ function searchposts(){
 function loadMenu(){
   var menu = $("#menu");
   menu.html("");
-  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades" onclick="pushmenu();pushFaculties();"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
+  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushSearch();"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades" onclick="pushmenu();pushFaculties();"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
   var url = baseUrl + "categories"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
