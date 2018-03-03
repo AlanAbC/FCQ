@@ -20,10 +20,6 @@ document.addEventListener('deviceready', function () {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
 
-  $('#facultades').on('click', function(){
-      pushmenu();
-      pushFaculties();
-  });
 
   window.plugins.OneSignal
   .startInit("ee3ed7e5-a647-44f4-9e8e-e756e7147518")
@@ -154,9 +150,7 @@ function filterposts(cat){
 
 }
 function homeposts(){
-  url = baseUrl + "posts"
-  addcard(url);
-  addposts(url);
+  addcard(baseUrl + 'posts_fac&fac=' + localStorage.getItem('faculti'));
 }
 function searchposts(){
   loader.attr('style', 'display: block !important');
@@ -186,7 +180,7 @@ function searchposts(){
 function loadMenu(){
   var menu = $("#menu");
   menu.html("");
-  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
+  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades" onclick="pushmenu();pushFaculties();"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
   var url = baseUrl + "categories"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
