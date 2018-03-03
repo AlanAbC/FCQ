@@ -381,6 +381,12 @@ i.circular.search.link.icon.srchicon {
 	margin-top: 5%;
 	background: none;
 }
+.catElement.active {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}
 .catElement{
 	position: relative;
 	float: left;
@@ -392,7 +398,8 @@ i.circular.search.link.icon.srchicon {
 	background: #003057 !important;
 	position: relative;
 	margin-top: 5%;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3)
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: 100ms ease-out;
 }
 .catElementText{
 	position: relative;

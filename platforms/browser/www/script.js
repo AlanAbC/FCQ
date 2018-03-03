@@ -6,6 +6,7 @@ var loader = $('.loader');
 
 var faculties = [];
 var facultiesFlags = [];
+var sendFaculties = [];
 document.addEventListener('deviceready', function () {
   if(localStorage.getItem('faculti')){
     document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
@@ -18,6 +19,11 @@ document.addEventListener('deviceready', function () {
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
   };
+
+  $('#facultades').on('click', function(){
+      pushmenu();
+      pushFaculties();
+  });
 
   window.plugins.OneSignal
   .startInit("ee3ed7e5-a647-44f4-9e8e-e756e7147518")
@@ -80,13 +86,20 @@ function pushpage(idevento){
   loader.attr('style', 'display: none !important');
     //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
+  function pushFaculties() {
+      document.querySelector('#myNavigator').pushPage('pageFacult.html');
+      var myNavigator = document.querySelector('ons-navigator');
+      myNavigator.addEventListener('postpush', function(event) {
+        cargarFacultades();
+      });
+  }
 function beginPosts(idFacultad){
   index = faculties.indexOf(idFacultad)
   if(facultiesFlags[index]){
-      $("#" + idFacultad). css('background-color', 'transparent');
+      $("#" + idFacultad). css('background-color', 'transparent').parents('.catElement').removeClass('active');
       facultiesFlags[index] = false;
   }else{
-      $("#" + idFacultad). css('background-color', 'white');
+      $("#" + idFacultad). css('background-color', 'white').parents('.catElement').addClass('active');
       facultiesFlags[index] = true;
   }
   
@@ -95,7 +108,7 @@ function beginPosts(idFacultad){
   cargarInicio();*/
 }
   function home_card_template(le, item) {
-    return '<div class="card_home"><div class="card_img" id="item-' + le + '"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button" onclick="pushpage('+item["id"]+')"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>';
+    return '<div class="card_home" onclick="pushpage('+item["id"]+')"><div class="card_img" id="item-' + le + '"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>';
   }
 
 //Funcion para agregar cartas
@@ -112,6 +125,16 @@ function addcard(url){
 
   });
   loader.attr('style', 'display: none !important');
+}
+function savefaculties(){
+     for (i = 0; i < facultiesFlags.length; i++) { 
+        if(facultiesFlags[i]){
+            sendFaculties.push(faculties[i])
+        }
+    }
+    localStorage.setItem('faculti' ,sendFaculties);
+    document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+    cargarInicio();
 }
 /*function addposts(url){
 
@@ -163,7 +186,7 @@ function searchposts(){
 function loadMenu(){
   var menu = $("#menu");
   menu.html("");
-  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" onclick="pushmenu();pushpage(\'pageFacult\');cargarFacultades();"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
+  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
   var url = baseUrl + "categories"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
