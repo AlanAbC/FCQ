@@ -28,22 +28,26 @@ document.addEventListener('deviceready', function () {
 }, false);
 //Funcion para llamar las funciones que cargan la informacion de la pantalla y muestra el loader
 function cargarInicio() {
-  addcard(baseUrl + 'posts_fac&fac=' + localStorage.getItem('faculti'));
+  addcard(baseUrl + 'posts');
+  addposts(baseUrl + 'posts');
   loadMenu();
 }
 function cargarFacultades(){
   var container = $("#catcontainer");
+  container.html('');
   var url = baseUrl + "faculties"
   $.getJSON(url, function(json, textStatus){
+     container.html('');
     $.each(json, function(index, item) {
-      var icon = item['image'] || 'img/college-graduation.png';
+      var icon = item['image'] || 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/No_icon_red.svg/1000px-No_icon_red.svg.png';
       faculties.push(item["slug"]);
       facultiesFlags.push(false);
       var item_category = 
       $('<div>')
       .addClass('catElement')
       .attr('style', 'background: ' + item['color'] + '!important')
-      .attr('onclick', 'beginPosts("'+item["slug"]+'")')
+      .attr('onclick', 'beginPosts('+item["term_id"]+')')
+      .attr('id', item['term_id'])
       .append(
         $('<p>')
         .addClass('catElementText')
@@ -58,33 +62,20 @@ function cargarFacultades(){
         $('<div>')
         .addClass('checkedFacult')
         .attr('id', item['slug'])
-        )
+        );
       container.append(item_category);
+
     });
   });
 }
 //Funcion para desplegar el menu
 function pushmenu(){
   $('.ui.labeled.icon.sidebar').sidebar('toggle');
-}
-//Funcion que despliega la pagina de busueda
-function pushSearch(){
-  document.querySelector('#myNavigator').pushPage('pagebus.html', {data: {title: 'Busqueda'}});
+
 }
 //Funcion para la navegacion entre ventanas
 function pushpage(idevento){
-  $(".img_single").attr('style', 'display: none !important');
-  document.querySelector('#myNavigator').pushPage('single.html', {data: {title: 'Post'}});
-  url = baseUrl + 'post&id=' + idevento;
-  $.getJSON(url, function(json, textStatus) {
-    $('.title_single').html(json[0].title);
-    $('.fecha_single').html(json[0].date);
-    $('.contenido_single').html(json[0].content);
-    $(".loaderSingle").attr('style', 'display: none !important');
-    $(".img_single").attr('style', 'display: block !important');
-    $('.img_single').css('background-image', 'url(' + json[0].image  + ')');
-  });
-  
+  document.querySelector('#myNavigator').pushPage(idevento+'.html', {data: {title: 'Post'}});
     //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
   function pushFaculties() {
@@ -104,23 +95,24 @@ function beginPosts(idFacultad){
       facultiesFlags[index] = true;
   }
   
-  /*localStorage.setItem('faculti' ,idFacultad);
+  localStorage.setItem('faculti' ,idFacultad);
   document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
-  cargarInicio();*/
+  cargarInicio();
 }
   function home_card_template(le, item) {
-    return '<div class="card_home" onclick="pushpage('+item["id"]+')"><div class="card_img" id="item-' + le + '"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>';
+    return '<div class="card_home"><div class="card_img" id="item-' + le + '"><div class="card_title">'+item["title"].substring(0,25)+'...'+'</div></div><div class="card_content"><div class="card_fecha">'+item["date"]+'</div><div class="card_compartir" id="push-button" onclick="pushpage('+item["id"]+')"><img src="img/share-option.png" alt="" class="compartir"></div><div class="card_text">'+item["excerpt"]+'</div></div></div>';
   }
 
 //Funcion para agregar cartas
 function addcard(url){
+  loader.attr('style', 'display: block !important');
   $(".cards").html("");
-  $(".loaderCards").attr('style', 'display: block !important');
+
   $.getJSON(url, function(json, textStatus) {
     $.each(json,function(le, item) {
       $(".cards").append(home_card_template(le, item));
       $(".card_img#item-" + le).css('background-image', 'url("'+item["image"]+'")');
-      $(".loaderCards").attr('style', 'display: none !important');
+
     });
 
   });
@@ -140,7 +132,7 @@ function savefaculties(){
         cargarInicio();
     }
 }
-/*function addposts(url){
+function addposts(url){
 
   $(".posts").html("");
 
@@ -150,7 +142,7 @@ function savefaculties(){
     });
 
   });
-}*/
+}
 function filterposts(cat){
   url = baseUrl + "posts_cat&cat="+cat;
   addcard(url);
@@ -158,7 +150,9 @@ function filterposts(cat){
 
 }
 function homeposts(){
-  addcard(baseUrl + 'posts_fac&fac=' + localStorage.getItem('faculti'));
+  url = baseUrl + "posts"
+  addcard(url);
+  addposts(url);
 }
 function searchposts(){
   loader.attr('style', 'display: block !important');
@@ -188,11 +182,11 @@ function searchposts(){
 function loadMenu(){
   var menu = $("#menu");
   menu.html("");
-  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushSearch();"> <i class="ion-search icon"></i>Busqueda </a><a class="item" id="facultades" onclick="pushmenu();pushFaculties();"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
+  menu.append('<a class="item" href="javascript:void(0)" onclick="pushmenu();homeposts();"><i class="ion-home icon"></i>Home </a> <a class="item" onclick="pushmenu();pushpage(\'pagebus\');"> <i class="ion-search icon"></i>Busqueda </a><a class="item" onclick="pushmenu();pushpage(\'pageFacult\');setTimeout(cargarFacultades(), 1000);"> <i class="ion-ios-bookmarks icon"></i>Facultades </a>');
   var url = baseUrl + "categories"
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
-      var icon = item['icon'] || 'ion-android-happy';
+      var icon = item['icon'] || 'ion-alert-circled';
       var item_menu = 
       $('<a>')
       .attr('id', item['slug'])
