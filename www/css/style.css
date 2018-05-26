@@ -405,12 +405,12 @@ i.circular.search.link.icon.srchicon {
     color: ;
 }
 .catcontainer{
-	position: relative;
-	float: left;
-	width: 100%;
-	height: auto;
-	margin-top: 5%;
-	background: none;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-top: 5%;
+    background: none;
 }
 .catElement.active {
     transform: scale(0.9);
@@ -419,47 +419,366 @@ i.circular.search.link.icon.srchicon {
     -o-transform: scale(0.9);
 }
 .catElement{
-	position: relative;
-	float: left;
-	margin-left: 5% !important; 
-	margin-top: 15px !important;
-	width: 42.5%;
-	height: 180px;
-	border-radius: 7px;
-	background: #003057 !important;
-	position: relative;
-	margin-top: 5%;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    float: left;
+    margin-left: 5% !important;
+    margin-top: 15px !important;
+    width: 42.5%;
+    height: 180px;
+    border-radius: 7px;
+    background: #003057 !important;
+    position: relative;
+    margin-top: 5%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     transition: 100ms ease-out;
 }
 .catElementText{
-	position: relative;
-	float: left;
-	width: 100%;
-	height: 40px;
-	text-align: center;
-	font-size: 12pt;
-	font-weight: bold;
-	color: white;
-	margin-top: 10% !important;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: bold;
+    color: white;
+    margin-top: 10% !important;
 }
 .imgCatElement{
-	position: relative;
-	float: left;
-	width: 35%;
-	margin-left: 32.5%;
-	margin-top: 3%;
-	height: auto;
+    position: relative;
+    float: left;
+    width: 35%;
+    margin-left: 32.5%;
+    margin-top: 3%;
+    height: auto;
 }
 .checkedFacult{
-	position: relative;
-	float: right;
-	width: 17px;
-	height: 17px;
-	border-radius: 100%;
-	border: 2px solid white;
-	margin-top: 47%;
-	margin-right: 10px;
+    position: relative;
+    float: right;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    border: 2px solid white;
+    margin-top: 47%;
+    margin-right: 10px;
+}
+.fab{
+    background: #FFFFFF !important;
+}
+
+.loginHeader{
+    background: #143356;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    float: left;
+
+}
+.logoLogin{
+    position: relative;
+    float: left;
+    width: 200px;
+    height: 200px;
+    left: 50%;
+    margin-left: -100px;
+
+}
+.containerLoginInputs{
+    position: relative;
+    float: left;
+    width: 85%;
+    margin-left: 7.5%;
+    margin-top: -200px;
+    height: 350px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0,0,0,.4);
+}
+.containerLogin{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.loginTitle{
+    position: relative;
+    float: left;
+    width: 100%;
+    color: #143356;
+    font-size: 28px;
+    margin-top: 5%!important;
+    font-weight: lighter;
+    text-align: center;
+}
+.inputLoginContainer{
+    position: relative;
+    float: left;
+    width: 85%!important;
+    height: 45px;
+    margin-top: 5%;
+    margin-left: 7.5%;
+    border-width: 1px;
+    border-color: #C9C9C9;
+    border-style: solid;
+    border-radius: 5px;
+}
+.inputLogin{
+    position: relative;
+    float: left;
+    width: 83%!important;
+    height: 100%!important;
+    margin-left: 3%!important;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: transparent !important;
+}
+.inputIconLogin{
+    position: relative;
+    float: left;
+    height: 50%;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+.btnLogin{
+    position: relative;
+    float: left;
+    width: 85%!important;
+    height: 50px;
+    margin-top: 10%;
+    margin-left: 7.5%;
+    background: #143356;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+.txtBtnLogin{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 35px;
+    margin-top: 7.5px!important;
+    font-weight: lighter;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+
+}
+[type=text], [type=password], [type=date], [type=datetime], [type=datetime-local], [type=month], [type=week], [type=email], [type=number], [type=search], [type=tel], [type=time], [type=url], [type=color], textarea {
+    box-shadow: none;
+}
+.btnContinueWithoutCount{
+    position: relative;
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    color: #B9B9B9;
+    text-align: center;
+    font-size: 15px;
+    font-weight: lighter;
+}
+.btnRegistrar{
+    position: relative;
+    float: left;
+    width: 40%;
+    font-size: 18px;
+    height: 40px;
+    color: #143356;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: 20px;
+    border-bottom: 1px solid #143356;
+}
+.registroContainer{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.profileHeader{
+    background: #143356;
+    width: 100%;
+    height: 150px;
+    position: relative;
+    float: left;
+
+}
+.downHeaderProfile{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    background: white;
+    z-index: 70;
+}
+.profileImage{
+    position: relative;
+    float: left;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -75px;
+    width: 150px;
+    height: 150px;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 0 15px rgba(0,0,0,.4);
+    border-radius: 100%;
+}
+.imgProf{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    padding: 10px;
+}
+.back-arrow{
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.edit_white{
+    position: relative;
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+.nameProfile{
+    position: relative;
+    float: left;
+    width: 90%;
+    color: "#333333";
+    font-size: 20pt;
+    margin-left: 5%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+.titleInteresesProfile{
+    position: relative;
+    float: left;
+    width: 90%;
+    color: "#333333";
+    font-size: 20pt;
+    margin-left: 5%;
+    font-weight: bold;
+    margin-top: 50px;
+}
+.titleSugerenciasProfile{
+    position: relative;
+    float: left;
+    width: 90%;
+    color: "#333333";
+    font-size: 20pt;
+    margin-left: 5%;
+    font-weight: bold;
+    margin-top: 30px;
+}
+.divisorName{
+    position: relative;
+    float: left;
+    left: 50%;
+    width: 50px;
+    margin-left: -25px;
+    height: 4px;
+    margin-top: 25px;
+    background: #143356;
+}
+.divisorSubtitle{
+    position: relative;
+    float: left;
+    width: 70px;
+    margin-left: 5%;
+    height: 4px;
+    margin-top: 15px;
+    background: #143356;
+}
+.containerIntereses{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.interes{
+    position: relative;
+    float: left;
+    width: auto;
+    border: 1.5px solid rgba(0.08, 0.21, 0.35, 1.0);
+    padding: 3px;
+    border-radius: 30px;
+    margin-top: 15px;
+    margin-right: 2%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 11pt;
+    font-weight: lighter;
+}
+.txtSugerencias{
+    position: relative;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 11pt;
+    font-weight: lighter;
+    text-align: center;
+    color: "#666666";
+    margin-top: 25px;
+}
+.containerSugerencias{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+.userContainer{
+    position: relative;
+    float: left;
+    width: 42.5%;
+    margin-left: 5%;
+    height: 200px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.close_icon{
+    position: relative;
+    float: right;
+    width: 12px;
+    height: 12px;
+    margin-top: 8%;
+    margin-right: 8%;
+}
+.img_sugerencias{
+    position: relative;
+    float: left;
+    width: 80px;
+    height: 80px;
+    left: 50%;
+    margin-left: -40px;
+    background: gray;
+    border-radius: 100%;
+    margin-top: 25px;
+}
+.txtUser{
+    position: relative;
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+    color: "#333333";
+    font-size: 13pt;
+    text-align: center;
+    font-weight: bold;
 }
 .fab{
     background: #FFFFFF !important;
