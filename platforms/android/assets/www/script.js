@@ -25,7 +25,9 @@ document.addEventListener('deviceready', function () {
   window.plugins.OneSignal
   .startInit("ee3ed7e5-a647-44f4-9e8e-e756e7147518")
   .handleNotificationOpened(notificationOpenedCallback)
+  .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
   .endInit();
+
 }, false);
 //Funcion para llamar las funciones que cargan la informacion de la pantalla y muestra el loader
 function cargarInicio() {
@@ -42,7 +44,7 @@ function cargarFacultades(){
       var icon = item['image'] || 'img/college-graduation.png';
       faculties.push(item["slug"]);
       facultiesFlags.push(false);
-      var item_category = 
+      var item_category =
       $('<div>')
       .addClass('catElement')
       .attr('style', 'background: ' + item['color'] + '!important')
@@ -88,10 +90,16 @@ function pushpage(idevento){
     $(".img_single").attr('style', 'display: block !important');
     $('.img_single').css('background-image', 'url(' + json[0].image  + ')');
   });
-  
+
     //page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
   }
   function pushFaculties() {
+       var temp = localStorage.getItem('faculti');
+      var array = temp.split(',');
+      for(i = 0; i< array.length; i++){
+          window.plugins.OneSignal.deleteTag(array[i]);
+      }
+      localStorage.removeItem("faculti");
       document.querySelector('#myNavigator').pushPage('pageFacult.html');
       var myNavigator = document.querySelector('ons-navigator');
       myNavigator.addEventListener('postpush', function(event) {
@@ -107,7 +115,7 @@ function beginPosts(idFacultad){
       $("#" + idFacultad). css('background-color', 'white').parents('.catElement').addClass('active');
       facultiesFlags[index] = true;
   }
-  
+
   /*localStorage.setItem('faculti' ,idFacultad);
   document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
   cargarInicio();*/
@@ -131,8 +139,10 @@ function addcard(url){
   loader.attr('style', 'display: none !important');
 }
 function savefaculties(){
-     for (i = 0; i < facultiesFlags.length; i++) { 
+     for (i = 0; i < facultiesFlags.length; i++) {
+      debugger;
         if(facultiesFlags[i]){
+            window.plugins.OneSignal.sendTag(faculties[i], faculties[i]);
             sendFaculties.push(faculties[i])
         }
     }
@@ -149,14 +159,11 @@ function register(){
     window.location.href = "https://feuq.com.mx/registro?psw=cHV0byBlbCBxdWUgbG8gbGVh";
 }
 /*function addposts(url){
-
   $(".posts").html("");
-
   $.getJSON(url, function(json, textStatus) {
     $.each(json,function(le, item) {
       $(".posts").append('<template id="'+item["id"]+'.html"><ons-page id="page2"><ons-toolbar><div class="left"><ons-back-button>Inicio</ons-back-button></div><div class="center">Post</div></ons-toolbar><div class="img_single" style="background-image: url(' + "'" + item['image'] + "'" + ')"><div class="title_single">'+item["title"]+'</div><p class="fecha_single">'+item["date"]+'</p><div class="contenido_single">'+item["content"]+'</div></div></ons-page></template>');
     });
-
   });
 }*/
 function filterposts(cat){
@@ -201,7 +208,7 @@ function loadMenu(){
   $.getJSON(url, function(json, textStatus){
     $.each(json, function(index, item) {
       var icon = item['icon'] || 'ion-android-happy';
-      var item_menu = 
+      var item_menu =
       $('<a>')
       .attr('id', item['slug'])
       .attr('href', 'javascript:void(0)')

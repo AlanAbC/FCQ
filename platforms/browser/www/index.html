@@ -48,6 +48,7 @@
                   <div class="center">Inicio</div>
                 </ons-toolbar>
                 <div class="cards">
+                    <div class="loaderCards"></div>
                 </div>  
               </ons-page>
             </template>
@@ -60,7 +61,8 @@
                             </div>
                             <div class="center">Post</div>
                         </ons-toolbar>
-                        <div class="img_single">
+                        <div class="loaderSingle"></div>
+                        <div class="img_single" hidden>
                             <div class="title_single"></div><p class="fecha_single"></p>
                             <div class="contenido_single"></div>
                         </div>
@@ -92,8 +94,8 @@
                     <div class="catcontainer" id="catcontainer">
                     </div>
                 </div>  
-                <ons-fab position="bottom right">
-                    <ons-icon icon="ion-checkmark-round" onclick="savefaculties()" style= "width: 30px"></ons-icon>
+                <ons-fab position="bottom right" onclick="savefaculties()">
+                    <ons-icon icon="ion-checkmark-round" style= "width: 30px"></ons-icon>
                   </ons-fab> 
               </ons-page>
             </template>
