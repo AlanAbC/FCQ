@@ -26,7 +26,7 @@
     <feature name="OneSignalPush">
         <param name="ios-package" value="OneSignalPush" />
     </feature>
-    <name>FCQ</name>
+    <name>FEUQ</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

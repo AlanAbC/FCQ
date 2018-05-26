@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">FCQ</string>
+    <string name="app_name">FEUQ</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="activity_name">@string/launcher_name</string>
-    
     <string name="google_app_id">1:173365143059:android:d708c7ed4b922dfc</string>
     <string name="google_api_key">AIzaSyC07ZyC_m1vf1JEQ2C4WmnPNZYQ99Jyflk</string>
 </resources>

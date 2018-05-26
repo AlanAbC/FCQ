@@ -1,4 +1,4 @@
-var baseUrl = 'http://feuq.com.mx/api/?o='
+var baseUrl = 'https://feuq.com.mx/api/?o='
 
 var urlCat = baseUrl + 'posts_cat&cat='
 
@@ -9,7 +9,8 @@ var facultiesFlags = [];
 var sendFaculties = [];
 document.addEventListener('deviceready', function () {
   if(localStorage.getItem('faculti')){
-    document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+    document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
+    //document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
     cargarInicio();
   } else {
     // document.querySelector('#myNavigator').replacePage('pageFacult.html', {data: {title: '¿Cual es tu facultad?'}});
@@ -33,8 +34,10 @@ function cargarInicio() {
 }
 function cargarFacultades(){
   var container = $("#catcontainer");
-  var url = baseUrl + "faculties"
+  container.html('');
+  var url = baseUrl + "faculties";
   $.getJSON(url, function(json, textStatus){
+     container.html('');
     $.each(json, function(index, item) {
       var icon = item['image'] || 'img/college-graduation.png';
       faculties.push(item["slug"]);
@@ -58,8 +61,9 @@ function cargarFacultades(){
         $('<div>')
         .addClass('checkedFacult')
         .attr('id', item['slug'])
-        )
+        );
       container.append(item_category);
+
     });
   });
 }
@@ -139,6 +143,10 @@ function savefaculties(){
         document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
         cargarInicio();
     }
+}
+
+function register(){
+    window.location.href = "https://feuq.com.mx/registro?psw=cHV0byBlbCBxdWUgbG8gbGVh";
 }
 /*function addposts(url){
 

@@ -33,8 +33,10 @@ function cargarInicio() {
 }
 function cargarFacultades(){
   var container = $("#catcontainer");
-  var url = baseUrl + "faculties"
+  container.html('');
+  var url = baseUrl + "faculties";
   $.getJSON(url, function(json, textStatus){
+     container.html('');
     $.each(json, function(index, item) {
       var icon = item['image'] || 'img/college-graduation.png';
       faculties.push(item["slug"]);
@@ -58,8 +60,9 @@ function cargarFacultades(){
         $('<div>')
         .addClass('checkedFacult')
         .attr('id', item['slug'])
-        )
+        );
       container.append(item_category);
+
     });
   });
 }

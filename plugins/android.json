@@ -18,6 +18,9 @@
     },
     "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "claresti.com"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "claresti.com"
     }
   },
   "dependent_plugins": {

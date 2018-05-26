@@ -29,6 +29,14 @@ module.exports = [
     "clobbers": [
       "window.plugins.socialsharing"
     ]
+  },
+  {
+    "id": "cordova-plugin-splashscreen.SplashScreen",
+    "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+    "pluginId": "cordova-plugin-splashscreen",
+    "clobbers": [
+      "navigator.splashscreen"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -38,7 +46,8 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "onesignal-cordova-plugin": "2.2.5",
   "es6-promise-plugin": "4.1.0",
-  "cordova-plugin-x-socialsharing": "5.2.1"
+  "cordova-plugin-x-socialsharing": "5.2.1",
+  "cordova-plugin-splashscreen": "5.0.2"
 };
 // BOTTOM OF METADATA
 });
