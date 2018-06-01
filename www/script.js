@@ -8,15 +8,20 @@ var faculties = [];
 var facultiesFlags = [];
 var sendFaculties = [];
 document.addEventListener('deviceready', function () {
-  if(localStorage.getItem('faculti')){
-    document.querySelector('#myNavigator').replacePage('userProfile.html');
-    //document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
-    //document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
-    cargarInicio();
-  } else {
-    // document.querySelector('#myNavigator').replacePage('pageFacult.html', {data: {title: '¿Cual es tu facultad?'}});
-    setTimeout(cargarFacultades(), 500);
+  if(localStorage.getItem('user_id')){
+    if(localStorage.getItem('faculti')){
+      //document.querySelector('#myNavigator').replacePage('userProfile.html');
+      //document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
+      document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+      cargarInicio();
+    } else {
+      // document.querySelector('#myNavigator').replacePage('pageFacult.html', {data: {title: '¿Cual es tu facultad?'}});
+      setTimeout(cargarFacultades(), 500);
+    }
+  }else{
+    document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
   }
+  
   
   var notificationOpenedCallback = function(jsonData) {
     console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -33,6 +38,26 @@ function cargarInicio() {
   addcard(baseUrl + 'posts_fac&fac=' + localStorage.getItem('faculti'));
   loadMenu();
 }
+function login(){
+    if($("#inputUser").val() != ""  && $("#inputPass").val() != ""  ){
+      localStorage.setItem('user_id' ,1);
+      if(localStorage.getItem('faculti')){
+        //document.querySelector('#myNavigator').replacePage('userProfile.html');
+        //document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
+        document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+        cargarInicio();
+      } else {
+        // document.querySelector('#myNavigator').replacePage('pageFacult.html', {data: {title: '¿Cual es tu facultad?'}});
+          document.querySelector('#myNavigator').pushPage('pageFacult.html');
+        var myNavigator = document.querySelector('ons-navigator');
+        myNavigator.addEventListener('postpush', function(event) {
+          cargarFacultades();
+        });
+      }
+    }else{
+
+    }
+ }
 function cargarFacultades(){
   var container = $("#catcontainer");
   container.html('');
@@ -145,8 +170,23 @@ function savefaculties(){
         cargarInicio();
     }
 }
+function sinCuenta(){
+  if(localStorage.getItem('faculti')){
+        //document.querySelector('#myNavigator').replacePage('userProfile.html');
+        //document.querySelector('#myNavigator').replacePage('pageLogin.html', {data: {title: 'Inicio'}});
+        document.querySelector('#myNavigator').replacePage('page1.html', {data: {title: 'Inicio'}});
+        cargarInicio();
+      } else {
+        // document.querySelector('#myNavigator').replacePage('pageFacult.html', {data: {title: '¿Cual es tu facultad?'}});
+          document.querySelector('#myNavigator').pushPage('pageFacult.html');
+        var myNavigator = document.querySelector('ons-navigator');
+        myNavigator.addEventListener('postpush', function(event) {
+          cargarFacultades();
+        });
+      }
+}
 function seeProfile(){
-  window.location.href = "https://feuq.com.mx/registro?psw=cHV0byBlbCBxdWUgbG8gbGVh";
+  document.querySelector('#myNavigator').replacePage('userProfile.html');
 }
 function register(){
     window.location.href = "https://feuq.com.mx/registro?psw=cHV0byBlbCBxdWUgbG8gbGVh";
